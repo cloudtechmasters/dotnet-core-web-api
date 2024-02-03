@@ -15,3 +15,12 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+- task: DockerInstaller@0
+  inputs:
+    dockerVersion: '17.09.0-ce'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'cloudtechmasters-dockerhub-connnection'
+    repository: 'dotnetcorewebapi'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
