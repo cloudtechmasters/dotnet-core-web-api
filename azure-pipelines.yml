@@ -24,3 +24,9 @@ steps:
     repository: 'cloudtechmasters/dotnetcorewebapi'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'azure-acr-connection'
+    repository: 'cloudtechmasters/dotnetcorewebapi'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
