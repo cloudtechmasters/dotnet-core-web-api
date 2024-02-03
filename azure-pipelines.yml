@@ -8,11 +8,17 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
+parameters:
+- name: myVariable
+  displayName: 'Enter a value for myVariable'
+  type: string
+  default: 'default value'
 variables:
   buildConfiguration: 'Release'
 
 steps:
+- script: echo "The value of myVariable is $(myVariable)"
+  displayName: 'The value of myVariable'
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 - task: DockerInstaller@0
